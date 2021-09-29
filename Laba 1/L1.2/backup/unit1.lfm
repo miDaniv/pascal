@@ -1,0 +1,90 @@
+object Form1: TForm1
+  Left = 464
+  Height = 240
+  Top = 189
+  Width = 320
+  Caption = 'Розв''язання квадратних рівнянь'
+  ClientHeight = 240
+  ClientWidth = 320
+  OnCreate = FormCreate
+  LCLVersion = '2.0.12.0'
+  object In_a: TEdit
+    Left = 56
+    Height = 23
+    Top = 40
+    Width = 80
+    TabOrder = 0
+  end
+  object In_b: TEdit
+    Left = 56
+    Height = 23
+    Top = 92
+    Width = 80
+    TabOrder = 1
+  end
+  object In_c: TEdit
+    Left = 56
+    Height = 23
+    Top = 157
+    Width = 80
+    TabOrder = 2
+  end
+  object L_a: TLabel
+    Left = 18
+    Height = 15
+    Top = 40
+    Width = 14
+    Caption = 'a='
+    ParentColor = False
+  end
+  object L_b: TLabel
+    Left = 18
+    Height = 15
+    Top = 92
+    Width = 15
+    Caption = 'b='
+    ParentColor = False
+  end
+  object L_c: TLabel
+    Left = 18
+    Height = 15
+    Top = 160
+    Width = 14
+    Caption = 'c='
+    ParentColor = False
+  end
+  object L_X1: TLabel
+    Left = 176
+    Height = 15
+    Top = 48
+    Width = 21
+    Caption = 'X1='
+    ParentColor = False
+  end
+  object L_X2: TLabel
+    Left = 176
+    Height = 15
+    Top = 100
+    Width = 21
+    Caption = 'X2='
+    ParentColor = False
+  end
+  object B_Rozv: TButton
+    Left = 56
+    Height = 25
+    Top = 200
+    Width = 75
+    Caption = 'Розв''язати'
+    OnClick = B_RozvClick
+    TabOrder = 3
+  end
+  object B_End: TButton
+    Left = 200
+    Height = 25
+    Top = 200
+    Width = 75
+    Caption = 'Завершуй'
+    OnClick = B_EndClick
+    TabOrder = 4
+  end
+end
