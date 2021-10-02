@@ -67,6 +67,41 @@
      end;
     Writeln('No roots');
     Readln;
+
+
+
+
+
+  //  if abs(f(a)) < Eps then
+  //  begin
+  //    Writeln('Root in point a and = ',a);
+  //    Readln;
+  //  end
+  //  else if abs(f(b)) < Eps then
+  //  begin
+  //    Writeln('Root in point b and = ',b);
+  //    Readln;
+  //  end
+  //  else if (f(a) * f(b) > 0) then
+  //  begin
+  //    Writeln('No roots');
+  //    Readln;
+  //  end
+  //  else if f(a) * f(b) < 0 then
+  //  begin
+  //     repeat
+  //           counter:= counter + 1;
+  //           c:= ( a + b ) / 2;
+  //           If f(a) * f(c) <= 0 then
+  //              b := c
+  //           Else a := c;
+  //           until (abs(b - a) < Eps);
+  //           x := ( a + b ) / 2;
+             //Writeln('x = ', f(a));//x:8:2);
+  //           Writeln('counter = ', counter);
+             //Readln;
+  //
+  //  end;
     end.
 
   type
