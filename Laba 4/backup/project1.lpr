@@ -9,7 +9,7 @@
     Classes, SysUtils, CustApp
     { you can add units after this };
 
-  Function f(x: Real): Real;
+ Function f(x: Real): Real;
   Begin
    f := 3 * x - 4 * ln(x) - 5;
   End;
@@ -21,7 +21,7 @@
 
   Function f2p(x, D: Real): Real;
   Begin
-   f2p := (fp( (x + D), D ) - f(x)) / D;
+   f2p := (fp( (x + D), D ) - fp(x,D)) / D;
   End;
 
   Var a, b, D, Dx, x, Eps: Real;
@@ -43,16 +43,16 @@
 
     x:= b;
 
-    If abs(f(x)*f2p(x, D)) < Eps then
+    If f(x)*f2p(x, D) < 0 then
+    begin;
+       x := a;
+    End;
+    if abs(f(x)*f2p(x, D)) < Eps then
     Begin
        Writeln(' For a given equation, the convergence of Newton''s method is not guaranteed ');
        Readln;
        Halt;
     End
-    else If f(x)*f2p(x, D) < 0 then
-    begin;
-       x := a;
-    End;
 
     For i:= 1 to Kmax do
      Begin;
@@ -67,41 +67,6 @@
      end;
     Writeln('No roots');
     Readln;
-
-
-
-
-
-  //  if abs(f(a)) < Eps then
-  //  begin
-  //    Writeln('Root in point a and = ',a);
-  //    Readln;
-  //  end
-  //  else if abs(f(b)) < Eps then
-  //  begin
-  //    Writeln('Root in point b and = ',b);
-  //    Readln;
-  //  end
-  //  else if (f(a) * f(b) > 0) then
-  //  begin
-  //    Writeln('No roots');
-  //    Readln;
-  //  end
-  //  else if f(a) * f(b) < 0 then
-  //  begin
-  //     repeat
-  //           counter:= counter + 1;
-  //           c:= ( a + b ) / 2;
-  //           If f(a) * f(c) <= 0 then
-  //              b := c
-  //           Else a := c;
-  //           until (abs(b - a) < Eps);
-  //           x := ( a + b ) / 2;
-             //Writeln('x = ', f(a));//x:8:2);
-  //           Writeln('counter = ', counter);
-             //Readln;
-  //
-  //  end;
     end.
 
   type

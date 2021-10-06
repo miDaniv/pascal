@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Classes, SysUtils, CustApp
   { you can add units after this };
-Function f(x: Real): Real;
+Function F(x: Real): Real;
 Begin
  f := x * x - 4
 End;
@@ -37,7 +37,7 @@ Begin
     Writeln('Root in point b and = ',b);
     Readln;
   end
-  else if (f(a) * f(b) > 0 then
+  else if (f(a) * f(b)) > 0 then
   begin
     Writeln('No roots');
     Readln;

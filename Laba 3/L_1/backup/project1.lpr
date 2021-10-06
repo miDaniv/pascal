@@ -39,7 +39,7 @@ Begin
   end
   else if (f(a) * f(b) > 0 then
   begin
-    Writeln('No roots);
+    Writeln('No roots');
     Readln;
   end
   else if f(a) * f(b) < 0 then
