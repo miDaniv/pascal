@@ -24,13 +24,13 @@
    f2p := (fp( (x + D), D ) - fp(x,D)) / D;
   End;
 
-  Var a, b, D, Dx, x, Eps: Real;
+  Var a, b, D, Dx, x, Eps: Integer;
   Var Kmax, i: Integer;
   Begin
-    Write('Inpute left  =>');
+    Write('Inpute left border  =>');
     Readln(a);
 
-    Write('Inpute right  =>');
+    Write('Inpute right border  =>');
     Readln(b);
 
     Write('Inpute Eps  =>');
@@ -43,16 +43,16 @@
 
     x:= b;
 
-    If f(x)*f2p(x, D) < 0 then
+    If f(x) * f2p(x, D) < 0 then
     begin;
-       x := a;
+     x := a;
     End;
-    if abs(f(x)*f2p(x, D)) < Eps then
+    if abs(f(x) * f2p(x, D)) < Eps then
     Begin
        Writeln(' For a given equation, the convergence of Newton''s method is not guaranteed ');
        Readln;
        Halt;
-    End
+    End;
 
     For i:= 1 to Kmax do
      Begin;
@@ -65,8 +65,8 @@
              Halt;
        end;
      end;
-    Writeln('No roots');
-    Readln;
+     Writeln('No roots');
+     Readln;
     end.
 
   type
