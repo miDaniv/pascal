@@ -1,0 +1,137 @@
+object Form1: TForm1
+  Left = 64
+  Height = 550
+  Top = 139
+  Width = 704
+  Caption = ' Розв''язування СЛАР'
+  ClientHeight = 550
+  ClientWidth = 704
+  LCLVersion = '2.0.12.0'
+  object StringGrid1: TStringGrid
+    Left = 40
+    Height = 200
+    Top = 152
+    Width = 376
+    ColCount = 3
+    FixedCols = 0
+    FixedRows = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+    RowCount = 3
+    TabOrder = 0
+  end
+  object StringGrid2: TStringGrid
+    Left = 488
+    Height = 200
+    Top = 152
+    Width = 72
+    ColCount = 1
+    FixedCols = 0
+    FixedRows = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+    RowCount = 3
+    TabOrder = 1
+  end
+  object StringGrid3: TStringGrid
+    Left = 592
+    Height = 204
+    Top = 152
+    Width = 72
+    ColCount = 1
+    FixedCols = 0
+    FixedRows = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+    RowCount = 3
+    TabOrder = 2
+  end
+  object Label1: TLabel
+    Left = 56
+    Height = 15
+    Top = 64
+    Width = 65
+    Caption = 'Розмірність'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 168
+    Height = 15
+    Top = 104
+    Width = 60
+    Caption = 'Матриця А'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 488
+    Height = 15
+    Top = 104
+    Width = 59
+    Caption = 'Матриця В'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 592
+    Height = 15
+    Top = 104
+    Width = 59
+    Caption = 'Матриця Х'
+    ParentColor = False
+  end
+  object Edit1: TEdit
+    Left = 136
+    Height = 23
+    Top = 56
+    Width = 40
+    TabOrder = 3
+    Text = '3'
+  end
+  object Button1: TButton
+    Left = 208
+    Height = 33
+    Top = 48
+    Width = 112
+    Caption = 'Налаштувати'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    OnClick = Button1Click
+    ParentFont = False
+    TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 152
+    Height = 65
+    Top = 408
+    Width = 251
+    Caption = 'Розв''язати'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    OnClick = Button2Click
+    ParentFont = False
+    TabOrder = 5
+  end
+  object Button3: TButton
+    Left = 424
+    Height = 65
+    Top = 408
+    Width = 240
+    Caption = 'Завершити'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    OnClick = Button3Click
+    ParentFont = False
+    TabOrder = 6
+  end
+end
