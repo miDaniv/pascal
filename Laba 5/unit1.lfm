@@ -1,12 +1,11 @@
 object Form1: TForm1
-  Left = 387
-  Height = 249
-  Top = 333
+  Left = 521
+  Height = 299
+  Top = 245
   Width = 550
   Caption = 'Розв''язання нелінійних рівнянь за МПД та МН'
-  ClientHeight = 249
+  ClientHeight = 299
   ClientWidth = 550
-  OnCreate = FormCreate
   LCLVersion = '2.0.12.0'
   object Label1: TLabel
     Left = 16
@@ -23,7 +22,6 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
-    OnClick = Label1Click
   end
   object Label2: TLabel
     Left = 16
@@ -40,7 +38,6 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
-    OnClick = Label2Click
   end
   object Label3: TLabel
     Left = 168
@@ -57,7 +54,6 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
-    OnClick = Label3Click
   end
   object Label4: TLabel
     Left = 152
@@ -106,7 +102,6 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
-    OnClick = Label6Click
   end
   object Label7: TLabel
     Left = 152
@@ -194,19 +189,18 @@ object Form1: TForm1
     Top = 120
     Width = 100
     ItemHeight = 15
-    ItemIndex = 0
     Items.Strings = (
-      'x*x-4.0=0'
-      '3.0*x-4.0*ln(x)-5.0=0'
+      'x*x - 4 = 0'
+      '3 * x - 4 * ln(x) - 5 = 0'
+      '5x - 12 = 0'
     )
-    OnChange = ComboBox2Change
     TabOrder = 1
     Text = 'x*x-4.0=0'
   end
   object Button1: TButton
     Left = 312
     Height = 40
-    Top = 144
+    Top = 184
     Width = 91
     Caption = 'Розв''язати'
     Font.CharSet = RUSSIAN_CHARSET
@@ -221,9 +215,9 @@ object Form1: TForm1
     TabOrder = 2
   end
   object Button2: TButton
-    Left = 440
+    Left = 448
     Height = 40
-    Top = 144
+    Top = 184
     Width = 91
     Caption = 'Очистити'
     Font.CharSet = RUSSIAN_CHARSET
@@ -240,7 +234,7 @@ object Form1: TForm1
   object BitBtn1: TBitBtn
     Left = 384
     Height = 30
-    Top = 200
+    Top = 240
     Width = 75
     DefaultCaption = True
     Kind = bkClose
@@ -252,7 +246,6 @@ object Form1: TForm1
     Height = 23
     Top = 48
     Width = 80
-    OnChange = Edit1Change
     TabOrder = 5
   end
   object Edit2: TEdit
@@ -282,6 +275,7 @@ object Form1: TForm1
     Height = 23
     Top = 56
     Width = 80
+    ReadOnly = True
     TabOrder = 9
   end
   object Edit6: TEdit
@@ -289,6 +283,31 @@ object Form1: TForm1
     Height = 23
     Top = 96
     Width = 80
+    ReadOnly = True
     TabOrder = 10
+  end
+  object Label11: TLabel
+    Left = 320
+    Height = 15
+    Top = 144
+    Width = 29
+    Caption = 'F(x)='
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlack
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Edit7: TEdit
+    Left = 440
+    Height = 23
+    Top = 136
+    Width = 80
+    ReadOnly = True
+    TabOrder = 11
   end
 end

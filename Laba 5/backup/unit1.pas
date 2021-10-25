@@ -23,8 +23,10 @@ type
     Edit4: TEdit;
     Edit5: TEdit;
     Edit6: TEdit;
+    Edit7: TEdit;
     Label1: TLabel;
     Label10: TLabel;
+    Label11: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -35,15 +37,7 @@ type
     Label9: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
-    procedure ComboBox2Change(Sender: TObject);
-    procedure Edit1Change(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure Label1Click(Sender: TObject);
-    procedure Label2Click(Sender: TObject);
-    procedure Label3Click(Sender: TObject);
-    procedure Label6Click(Sender: TObject);
   private
 
   public
@@ -65,7 +59,7 @@ Function f(x: Real; k1: Byte): Real;
   Case k1 of
   0: f := x * x - 4.0;
   1: f := 3.0 * x - 4.0 * ln(x) - 5.0;
-  2: f := 2.0 *x - 5.0;
+  2: f := 5.0 * x - 12.0;
   End;
   end;
 
@@ -126,29 +120,20 @@ Begin
   exit;
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
-begin
-
-end;
-
-procedure TForm1.Edit1Change(Sender: TObject);
-begin
-
-end;
-
 procedure TForm1.ComboBox1Change(Sender: TObject);
 begin
 Case ComboBox1.ItemIndex of
-   0: ;
-   1: ;
-   2: ;
-   end;
+0: Begin
+Label7.Visible := False;
+Edit4.Visible := False;
+end;
+1: Begin
+Label7.Visible := True;
+Edit4.Visible := True;
+end;
+end;
 end;
 
-procedure TForm1.ComboBox2Change(Sender: TObject);
-begin
-
-end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 Var L: Integer;
@@ -193,7 +178,8 @@ Begin
   Case ComboBox2.ItemIndex of
   0: k := 0;
   1: k := 1;
-  2: k := 2;  end;
+  2: k := 2;
+  end;
   If m = 0 then
   If (F(a, k)) * (F(b, k)) > 0 then
   Begin
@@ -218,6 +204,7 @@ Begin
   0: begin
    Edit5.Text := FloatToStr(MPD(a, b, Eps, k, L));
    Edit6.Text := IntToStr(L);
+   Edit7.Text := FloatToStr(f(MPD(a, b, Eps, k, L), k));
    Label10.Caption :='Кількість поділів =';
   Exit
   end;
@@ -225,6 +212,7 @@ Begin
    Kmax := StrToInt(Edit4.Text);
    Edit5.Text := FloatToStr(MN(a,b,Eps,k,Kmax,L));
    Edit6.Text := IntToStr(L);
+   Edit7.Text := FloatToStr(f(MN(a,b,Eps,k,Kmax,L), k));
    Label10.Caption :='Кількість ітерацій =';
   end;
   end
@@ -249,31 +237,6 @@ begin
   end;
   end;
   end;
-
-procedure TForm1.Button3Click(Sender: TObject);
-begin
-
-end;
-
-procedure TForm1.Label1Click(Sender: TObject);
-begin
-
-end;
-
-procedure TForm1.Label2Click(Sender: TObject);
-begin
-
-end;
-
-procedure TForm1.Label3Click(Sender: TObject);
-begin
-
-end;
-
-procedure TForm1.Label6Click(Sender: TObject);
-begin
-
-end;
 
 end.
 
