@@ -88,7 +88,11 @@ N := StrToInt(Edit1.Text);
  b[j] := StrToFloat(StringGrid2.Cells[0,j - 1]);
  End;
  // procedure
-
+ if Abs(determinant(a)) <= 0.00000001 then
+ begin
+ ShowMessage('Determinant = 0');
+ exit;
+ end;
  x[1] := determinant(tempMatrix(a,b,1))/determinant(a);
  x[2] := determinant(tempMatrix(a,b,2))/determinant(a);
  x[3] := determinant(tempMatrix(a,b,3))/determinant(a);

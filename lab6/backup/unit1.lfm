@@ -80,7 +80,6 @@ object Form1: TForm1
     Height = 23
     Top = 56
     Width = 40
-    OnChange = Edit1Change
     TabOrder = 3
     Text = '3'
   end
