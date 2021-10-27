@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 209
+  Left = 537
   Height = 550
-  Top = 293
+  Top = 249
   Width = 704
   Caption = ' Розв''язування СЛАР'
   ClientHeight = 550
@@ -133,5 +133,20 @@ object Form1: TForm1
     OnClick = Button3Click
     ParentFont = False
     TabOrder = 6
+  end
+  object Edit2: TEdit
+    Left = 544
+    Height = 23
+    Top = 56
+    Width = 80
+    TabOrder = 7
+  end
+  object Label5: TLabel
+    Left = 488
+    Height = 15
+    Top = 56
+    Width = 48
+    Caption = 'Det(A) = '
+    ParentColor = False
   end
 end

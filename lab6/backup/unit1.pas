@@ -18,10 +18,12 @@ type
     Button2: TButton;
     Button3: TButton;
     Edit1: TEdit;
+    Edit2: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    Label5: TLabel;
     StringGrid1: TStringGrid;
     StringGrid2: TStringGrid;
     StringGrid3: TStringGrid;
@@ -56,7 +58,7 @@ begin
       begin
       a[i, j] := b [i];
       end;
-         tempMatrix := a;
+      tempMatrix := a;
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
@@ -92,6 +94,7 @@ N := StrToInt(Edit1.Text);
  begin
  ShowMessage('Determinant = 0');
  exit;
+ Edit2.Text := FloatToStr(determinant(a));
  end;
  x[1] := determinant(tempMatrix(a,b,1))/determinant(a);
  x[2] := determinant(tempMatrix(a,b,2))/determinant(a);

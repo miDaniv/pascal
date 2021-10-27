@@ -204,7 +204,7 @@ Begin
   0: begin
    Edit5.Text := FloatToStr(MPD(a, b, Eps, k, L));
    Edit6.Text := IntToStr(L);
-   Edit7.Text := FloatToStr(f(MPD(a, b, Eps, k, L), k));
+   Edit7.Text := FloatToStrF(f(MPD(a, b, Eps, k, L), k), ffNumber, 8, 10);
    Label10.Caption :='Кількість поділів =';
   Exit
   end;
@@ -212,7 +212,7 @@ Begin
    Kmax := StrToInt(Edit4.Text);
    Edit5.Text := FloatToStr(MN(a,b,Eps,k,Kmax,L));
    Edit6.Text := IntToStr(L);
-   Edit7.Text := FloatToStr(f(MN(a,b,Eps,k,Kmax,L), k));
+   Edit7.Text := FloatToStrF(f(MN(a,b,Eps,k,Kmax,L), k), ffNumber, 8, 10);
    Label10.Caption :='Кількість ітерацій =';
   end;
   end
