@@ -63,8 +63,8 @@ margin := 50; // Відступ на 50 пікселів від краю фор�
 MinX := Xpoints[0];
 MaxX := Xpoints[pointsCount-1];
 
-MinY := Ypoints[0];
-MaxY := Ypoints[0];
+MinY := MinX; //Ypoints[0];
+MaxY := MaxX; //Ypoints[0];
 
 For i:=1 to pointsCount-1 do  //  пошук максимального та мінімального Y
 Begin
@@ -137,7 +137,7 @@ Kry := (MaxY - MinY) / 10;
 
 For i := 0 to 11 do
 Begin
-TextOut(Round(Kx * Gx + Zx) - 5 * KrokX + i * KrokX - 5 ,Form1.ClientHeight - margin + 5 ,FloatToStrF(xx,ffGeneral,4,6));
+TextOut(Round(Kx * Gx + Zx) - 5 * KrokX + i * KrokX - 5 ,Form1.ClientHeight - margin + 5 ,FloatToStrF(xx,ffGeneral,2,2));
 
 TextOut(margin - 5, Round(Ky * Gy + Zy) - 5 * KrokY + i * KrokY,FloatToStrF(yy,ffGeneral,4,6));
 xx := xx + KrX;
