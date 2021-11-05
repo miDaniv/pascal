@@ -156,10 +156,9 @@ procedure TForm1.Button2Click(Sender: TObject);
   end
   else
   if b[n] = 0 then
-  ShowMessage('Systema rivnyannya ne maye rozv''yazkiv')
+  ShowMessage('Система рівнянь не має розв''язків')
   else
-  ShowMessage('bezlich rozvyazkiv');
-  ShowMessage('press any key');
+  ShowMessage('безліч коренів');
   end;
   end;
   end.

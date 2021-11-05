@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 594
+  Left = 711
   Height = 240
-  Top = 392
+  Top = 371
   Width = 320
   Caption = 'Form1'
   OnPaint = FormPaint

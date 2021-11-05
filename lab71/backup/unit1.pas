@@ -5,7 +5,7 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls;
 
 type
 
@@ -139,7 +139,7 @@ For i := 0 to 11 do
 Begin
 TextOut(Round(Kx * Gx + Zx) - 5 * KrokX + i * KrokX - 5 ,Form1.ClientHeight - margin + 5 ,FloatToStrF(xx,ffGeneral,2,2));
 
-TextOut(margin - 5, Round(Ky * Gy + Zy) - 5 * KrokY + i * KrokY,FloatToStrF(yy,ffGeneral,4,6));
+TextOut(margin - 5, Round(Ky * Gy + Zy) - 5 * KrokY + i * KrokY,FloatToStrF(yy,ffGeneral,2,2));
 xx := xx + KrX;
 yy := yy - KrY;
 End;
