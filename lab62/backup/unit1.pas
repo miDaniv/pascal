@@ -5,7 +5,8 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, StdCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, StdCtrls,
+  ExtCtrls;
 
 type
  Matrix = Array[1..5,1..5] of Real;

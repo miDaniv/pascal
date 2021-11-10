@@ -143,9 +143,8 @@ TextOut(margin - 5, Round(Ky * Gy + Zy) - 5 * KrokY + i * KrokY,FloatToStrF(yy,f
 xx := xx + KrX;
 yy := yy - KrY;
 End;
-//
+
 TextOut(Form1.ClientWidth div 2 - 50,Form1.ClientHeight-30 ,'Graph of a function y = x * sin (x)');
-//
 
 Pen.Width := 2;
 Pen.Color:=clRed;

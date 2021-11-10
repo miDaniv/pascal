@@ -5,7 +5,8 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, StdCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Grids, StdCtrls,
+  ExtCtrls;
 
 type
  Matrix = Array[1..5,1..5] of Real;
@@ -158,7 +159,7 @@ procedure TForm1.Button2Click(Sender: TObject);
   if b[n] = 0 then
   ShowMessage('Система рівнянь не має розв''язків')
   else
-  ShowMessage('безліч коренів');
+  ShowMessage('система вироджена');
   end;
   end;
   end.
