@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <cmath>
 
 namespace Project1 {
 
@@ -59,6 +60,7 @@ namespace Project1 {
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::ComboBox^ comboBox2;
 
 	private:
 		/// <summary>
@@ -96,6 +98,7 @@ namespace Project1 {
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -292,11 +295,21 @@ namespace Project1 {
 			this->label11->TabIndex = 21;
 			this->label11->Text = L"N_Simp=";
 			// 
+			// comboBox2
+			// 
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"1/(1+x+x^2).", L"1/ln(x)." });
+			this->comboBox2->Location = System::Drawing::Point(130, 172);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(260, 21);
+			this->comboBox2->TabIndex = 22;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1265, 516);
+			this->Controls->Add(this->comboBox2);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->label10);
 			this->Controls->Add(this->label9);
@@ -322,31 +335,31 @@ namespace Project1 {
 			this->Controls->Add(this->button1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
-			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	double f(float x)
+	double f(double x, char key)
 	{
-		double y;
-		y = 1 / (1 + x + x * x);
-		return y;
+		switch (key)
+		{
+		case 0: return 1.0 / (1 + x + x * x);
+		case 1: return 1.0 / log(x);
+		}
 	}
-	double sum(int m, double x, double w)
+	double sum(int m, double x, double w, char key)
 	{
 		double s;
 		s = 0;
 		for (int i = 1; i <= m; i++)
 		{
-			s = s + f(x);
+			s = s + f(x, key);
 			x = x + w;
 		}
 		return s;
 	}
-	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
+
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		double a = 0;
@@ -356,11 +369,26 @@ namespace Project1 {
 	    double h = (b - a) / N;
 	    double int_new, int_old = 0;
     	textBox6->Text = Convert::ToString(3.141593 / (3 * Math::Sqrt(3)));
+
+		char key;
+
+		switch (comboBox2->SelectedIndex) // вибір нелінійного рівняння
+		{
+		case 0: key = 0; break;
+		case 1: key = 1; break;
+		}
+		if (key == -1)
+		{
+			MessageBox::Show("Оберіть рівняння !");
+			comboBox2->Focus();
+			return;
+		}
+
 		switch (comboBox1->SelectedIndex)
 		{
-		 case 0: int_new = h * sum(N , a + h / 2 , h); break;
-		 case 1: int_new = h * 0.5 * (f(a) + f(b) + 2 * sum(N - 1, a + h, h)); break;
-		 case 2: int_new = h * (f(a) + f(b) + 4 * sum(N, a + h / 2, h) + 2 * sum(N - 1, a + h, h)) / 6; break;
+		 case 0: int_new = h * sum(N , a + h / 2 , h, key); break;
+		 case 1: int_new = h * 0.5 * (f(a, key) + f(b, key) + 2 * sum(N - 1, a + h, h, key)); break;
+		 case 2: int_new = h * (f(a, key) + f(b, key) + 4 * sum(N, a + h / 2, h, key) + 2 * sum(N - 1, a + h, h, key)) / 6.0; break;
 	    }
 			 while (Math::Abs(int_new - int_old) > Eps)
 			 {
@@ -370,17 +398,17 @@ namespace Project1 {
 				 switch (comboBox1->SelectedIndex)
 				 {
 				 case 0: {
-					 int_new = h * sum(N, a + h / 2, h);
+					 int_new = h * sum(N, a + h / 2, h, key);
 					 textBox3->Text = Convert::ToString(int_new);
 					 textBox7->Text = Convert::ToString(N);
 				 } break;
 				 case 1: {
-					 int_new = h * 0.5 * (f(a) + f(b) + 2 * sum(N - 1, a + h, h));
+					 int_new = h * 0.5 * (f(a, key) + f(b, key) + 2 * sum(N - 1, a + h, h, key));
 					 textBox4->Text = Convert::ToString(int_new);
 					 textBox8->Text = Convert::ToString(N);
 				 } break;
 				 case 2: {
-					 int_new = h * (f(a) + f(b) + 4 * sum(N, a + h / 2, h) + 2 * sum(N - 1, a + h, h)) / 6;
+					 int_new = h * (f(a, key) + f(b, key) + 4 * sum(N, a + h / 2, h, key) + 2 * sum(N - 1, a + h, h, key)) / 6.0;
 					 textBox5->Text = Convert::ToString(int_new);
 					 textBox9->Text = Convert::ToString(N);
 				 } break;
