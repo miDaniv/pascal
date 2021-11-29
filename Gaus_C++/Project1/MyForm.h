@@ -252,66 +252,95 @@ namespace Project1 {
 
 		}
 #pragma endregion
+		bool Gauss(double A[10][10], double B[10], int N, double X[10])
+		{
+			int i, j;
+			for (i = 1; i <= N - 1; i++)
+			{
+				int k = i;
+				R = abs(A[i][i]);
+				for (j = i + 1; j <= N; j++)
+				{
+					if (abs(A[j][i] > R))
+					{
+						k = j;
+						R = (abs(A[j][i]));
+					}
+				}
+				if (R < 1e-7)
+				{
+					MessageBox::Show("  розв`язку немає ");
+					return false;
+				}
+				if (k != i)
+				{
+					R = B[k];
+					B[k] = B[i];
+					B[i] = R;
+					for (j = 1; j <= N; j++)
+					{
+						R = A[k][j];
+						A[k][j] = A[i][j];
+						A[i][j] = R;
+					}
+				}
+				R = A[i][i];
+				B[i] = B[i] / R;
+				for (j = 1; j <= N; j++)
+					A[i][j] = A[i][j] / R;
+				for (k = i + 1; k <= N + 1; k++)
+				{
+					R = A[k][i];
+					B[k] = B[k] - R * B[i];
+					A[k][i] = 0;
+					for (j = i + 1; j <= N; j++)
+						A[k][j] = A[k][j] - R * A[i][j];
+				}
+			}
+			if (abs(A[N][N]) <= 1e-7)
+			{
+				MessageBox::Show(" Рівняння не сумісне ");
+				return false;
+			}
+			for (int i = 0; i < N; i++)
+				for (int j = 0; j < N; j++)
+				{
+					T_Matrix_dgv->Rows[i]->Cells[j]->Value = Convert::ToString(A[i + 1][j + 1]);
+				}
+			MessageBox::Show("Завершили прямий хід");
 
+			// Зворотній хід
+			X[N] = B[N] / A[N][N];
+			for (int i = N - 1; i >= 1; i--)
+			{
+				R = B[i];
+				for (int j = i + 1; j <= N; j++) R -= A[i][j] * X[j];
+				X[i] = R;
+			}
+			return true;
+		}
 	private: System::Void BСreateGrid_Click(System::Object^ sender, System::EventArgs^ e) {
 		int N = Convert::ToInt32(NUD_rozmir->Value);
 		for (int i = 1; i <= N; i++)
-		{
 			for (int j = 1; j <= N; j++)
 			{
 				A[i][j] = Convert::ToDouble(A_Matrix_dgv->Rows[i - 1]->Cells[j - 1]->Value);
 			}
-			A[i][N+1] = Convert::ToDouble(B_Vector_dgv->Rows[i - 1]->Cells[0]->Value);
-		}
-
-		bool gauss;
-		double ratio;
-		int i, j, k;
-
-		/* Applying Gauss Elimination */
-		for (i = 1; i <= N - 1; i++)
-		{
-			if (Math::Abs(A[i][i]) <= eps)
-			{
-				MessageBox::Show("Матриця системи є виродженою");
-				gauss = false;
-			}
-			for (j = i + 1; j <= N; j++)
-			{
-				ratio = A[j][i] / A[i][i];
-
-				for (k = 1; k <= N + 1; k++)
-				{
-					A[j][k] = A[j][k] - ratio * A[i][k];
-				}
-			}
-		}
-		/* Obtaining Solution by Back Subsitution */
-		X[N] = A[N][N + 1] / A[N][N];
-
-		for (i = N - 1; i >= 1; i--)
-		{
-			X[i] = A[i][N + 1];
-			for (j = i + 1; j <= N; j++)
-			{
-				X[i] = X[i] - A[i][j] * X[j];
-			}
-			X[i] = X[i] / A[i][i];
-		}
-		gauss = true;
-		if (gauss)
+		for (int j = 1; j <= N; j++)
+			B[j] = Convert::ToDouble(B_Vector_dgv->Rows[j - 1]->Cells[0]->Value);
+		if (Gauss(A, B, N, X) == true)
 		{
 			for (int i = 1; i <= N; i++)
 				X_Vector_dgv->Rows[i - 1]->Cells[0]->Value = Convert::ToString(X[i]);
+			MessageBox::Show("Розв'язок знайдено");
 		}
 		else
 		{
 			for (int i = 1; i <= N; i++)
 				X_Vector_dgv->Rows[i - 1]->Cells[0]->Value = "?";
+			MessageBox::Show("Система вироджена!");
 			return;
 		}
-
-
 	}
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		A_Matrix_dgv->ColumnCount = 1;
